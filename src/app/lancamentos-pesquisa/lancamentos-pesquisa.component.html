@@ -39,8 +39,8 @@
           <tr>
             <td>{{lancamento.pessoa}}</td>
             <td>{{lancamento.descricao}}</td>
-            <td class="col-data">{{lancamento.dataVencimento}}</td>
-            <td class="col-data">{{lancamento.dataPagamento}}</td>
+            <td class="col-data">{{lancamento.dataVencimento | date:'dd/MM/y'}}</td>
+            <td class="col-data">{{lancamento.dataPagamento | date:'dd/MM/y'}}</td>
             <td class="col-valor" [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor}}</td>
             <td style="text-align: center">
               <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom"></button>

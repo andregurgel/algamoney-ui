@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -7,11 +8,11 @@ import { Component} from '@angular/core';
 })
 export class LancamentosPesquisaComponent {
   lancamentos = [
-    { tipo: 'DESPESA', descricao: 'Compra de pão', dataVencimento: '30/06/2017', dataPagamento: null, valor: 4.55, pessoa: 'Padaria do José' },
-    { tipo: 'DESPESA', descricao: 'Jogos', dataVencimento: '30/06/2017', dataPagamento: '30/07/2017', valor: 99.90, pessoa: 'Nuuvem' },
-    { tipo: 'RECEITA', descricao: 'Salario', dataVencimento: '03/07/2017', dataPagamento: null, valor: 500, pessoa: 'Coca-Cola' },
-    { tipo: 'RECEITA', descricao: 'Mesada', dataVencimento: '30/06/2017', dataPagamento: null, valor: 150, pessoa: 'Governo' },
-    { tipo: 'DESPESA', descricao: 'Bola de Futebol', dataVencimento: '30/06/2017', dataPagamento: '30/07/2017', valor: 25.90, pessoa: 'Mercadinho' },
-    { tipo: 'RECEITA', descricao: 'Trade', dataVencimento: '03/07/2017', dataPagamento: null, valor: 30.59, pessoa: 'Clear' }
+    { tipo: 'DESPESA', descricao: 'Compra de pão', dataVencimento: moment('2017-6-30'), dataPagamento: null, valor: 4.55, pessoa: 'Padaria do José' },
+    { tipo: 'DESPESA', descricao: 'Jogos', dataVencimento: moment('2017-6-30'), dataPagamento: moment('2017-7-30'), valor: 99.90, pessoa: 'Nuuvem' },
+    { tipo: 'RECEITA', descricao: 'Salario', dataVencimento: moment('2017-7-03'), dataPagamento: null, valor: 500, pessoa: 'Coca-Cola' },
+    { tipo: 'RECEITA', descricao: 'Mesada', dataVencimento: moment('2017-6-30'), dataPagamento: null, valor: 150, pessoa: 'Governo' },
+    { tipo: 'DESPESA', descricao: 'Bola de Futebol', dataVencimento: moment('2017-6-30'), dataPagamento: moment('2017-7-30'), valor: 25.90, pessoa: 'Mercadinho' },
+    { tipo: 'RECEITA', descricao: 'Trade', dataVencimento: moment('2017-7-03'), dataPagamento: null, valor: 30.59, pessoa: 'Clear' }
   ];
 }
