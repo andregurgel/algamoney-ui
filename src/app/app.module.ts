@@ -3,8 +3,8 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import {TableModule} from "primeng/table";
-import {TooltipModule} from 'primeng/tooltip';
+import { TableModule } from "primeng/table";
+import { TooltipModule } from 'primeng/tooltip';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,12 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import {registerLocaleData} from "@angular/common";
 import localeBr from "@angular/common/locales/pt";
 import localeBrExtra from "@angular/common/locales/extra/pt";
+import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -24,15 +30,21 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    LancamentosCadastroComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     InputTextModule,
     ButtonModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    CalendarModule,
+    SelectButtonModule,
+    DropdownModule,
+    InputNumberModule
   ],
   providers: [
     {
