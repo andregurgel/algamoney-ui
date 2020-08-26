@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
+import { InputMaskModule } from 'primeng/inputmask';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -31,7 +33,8 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
-    LancamentosCadastroComponent
+    LancamentosCadastroComponent,
+    PessoasCadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    InputMaskModule
   ],
   providers: [
     {
