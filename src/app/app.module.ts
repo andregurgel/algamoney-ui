@@ -23,6 +23,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { InputMaskModule } from 'primeng/inputmask';
+import { FormsModule } from '@angular/forms';
+import { MessageComponent } from './message/message.component';
+import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -34,7 +37,9 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     NavbarComponent,
     PessoasPesquisaComponent,
     LancamentosCadastroComponent,
-    PessoasCadastroComponent
+    PessoasCadastroComponent,
+    MessageComponent,
+    LancamentosGridComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    InputMaskModule
+    InputMaskModule,
+    FormsModule
   ],
   providers: [
     {
