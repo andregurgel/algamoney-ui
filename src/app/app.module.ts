@@ -26,6 +26,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -39,7 +40,8 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     LancamentosCadastroComponent,
     PessoasCadastroComponent,
     MessageComponent,
-    LancamentosGridComponent
+    LancamentosGridComponent,
+    PessoasGridComponent
   ],
   imports: [
     BrowserModule,
