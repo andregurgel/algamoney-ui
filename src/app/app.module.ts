@@ -8,7 +8,6 @@ import {registerLocaleData} from "@angular/common";
 import localeBr from "@angular/common/locales/pt";
 import localeBrExtra from "@angular/common/locales/extra/pt";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MessageComponent } from './message/message.component';
 import {LancamentosModule} from "./lancamentos/lancamentos.module";
 import {PessoasModule} from "./pessoas/pessoas.module";
 
@@ -19,7 +18,6 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
   declarations: [
     AppComponent,
     NavbarComponent,
-    MessageComponent,
   ],
   imports: [
     BrowserModule,

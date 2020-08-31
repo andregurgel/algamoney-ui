@@ -13,6 +13,7 @@ import {SelectButtonModule} from "primeng/selectbutton";
 import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {InputMaskModule} from "primeng/inputmask";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -33,7 +34,8 @@ import {InputMaskModule} from "primeng/inputmask";
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    InputMaskModule
+    InputMaskModule,
+    SharedModule
   ],
   exports: [
     PessoasCadastroComponent,
