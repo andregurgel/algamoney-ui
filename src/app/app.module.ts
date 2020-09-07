@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LancamentosModule} from "./lancamentos/lancamentos.module";
 import {PessoasModule} from "./pessoas/pessoas.module";
 import {CoreModule} from "./core/core.module";
+import { HttpClientModule } from '@angular/common/http';
+import { LancamentosService } from './lancamentos/lancamentos.service';
+import { PessoasService } from './pessoas/pessoas.service';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -25,13 +28,16 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     AppRoutingModule,
     LancamentosModule,
     PessoasModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
   ],
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'pt'
-    }
+    },
+    LancamentosService,
+    PessoasService
   ],
   bootstrap: [AppComponent]
 })
