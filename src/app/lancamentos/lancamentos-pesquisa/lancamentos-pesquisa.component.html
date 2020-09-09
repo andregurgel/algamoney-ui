@@ -7,15 +7,15 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
-        <input type="text" pInputText name="descricao" [(ngModel)]="descricao"/>
+        <input type="text" pInputText name="descricao" [(ngModel)]="filtro.descricao"/>
       </div>
 
       <div class="ui-g-12">
         <label style="display: block">Vencimento</label>
-        <p-calendar inputId="basic" dateFormat="dd/mm/yy" [showIcon]="true" name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio"></p-calendar>
+        <p-calendar inputId="basic" dateFormat="dd/mm/yy" [showIcon]="true" name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
 
         <label style="margin: 0px 3px 0px 3px">até</label>
-        <p-calendar inputId="basic" dateFormat="dd/mm/yy" [showIcon]="true" name="vencimentoFim" [(ngModel)]="dataVencimentoFim"></p-calendar>
+        <p-calendar inputId="basic" dateFormat="dd/mm/yy" [showIcon]="true" name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
       </div>
 
       <div class="ui-g-12">
@@ -26,7 +26,31 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Pessoa</th>
+            <th>Descricao</th>
+            <th class="col-data">Vencimento</th>
+            <th class="col-data">Pagamento</th>
+            <th style="width: 120px">Valor</th>
+            <th style="width: 120px"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lancamento>
+          <tr>
+            <td>{{lancamento.pessoa}}</td>
+            <td>{{lancamento.descricao}}</td>
+            <td class="col-data">{{lancamento.dataVencimento | date:'dd/MM/y'}}</td>
+            <td class="col-data">{{lancamento.dataPagamento | date:'dd/MM/y'}}</td>
+            <td class="col-valor" [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor}}</td>
+            <td style="text-align: center">
+              <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
     <div class="ui-g-12">
       <button pButton type="button" label="Novo Lançamento" ></button>
