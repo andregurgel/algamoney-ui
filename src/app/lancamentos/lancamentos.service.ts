@@ -45,4 +45,12 @@ export class LancamentosService {
 
     return this.http.get(`${this.URL}?resumo`, { headers, params }).toPromise();
   }
+
+  excluir(codigo: number): Promise<any> {
+    let headers = new HttpHeaders();
+
+    headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.URL}/${codigo}`, {headers}).toPromise();
+  }
 }

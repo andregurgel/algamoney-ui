@@ -26,7 +26,7 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)">
+      <p-table #tabela [value]="lancamentos" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)">
         <ng-template pTemplate="header">
           <tr>
             <th>Pessoa</th>
@@ -37,7 +37,7 @@
             <th style="width: 120px"></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-lancamento>
+        <ng-template pTemplate="body" let-lancamento let-lanc="rowData">
           <tr>
             <td>{{lancamento.pessoa}}</td>
             <td>{{lancamento.descricao}}</td>
@@ -46,7 +46,7 @@
             <td class="col-valor" [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor}}</td>
             <td style="text-align: center">
               <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom"></button>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" (click)="excluir(lancamento)" tooltipPosition="bottom"></button>
             </td>
           </tr>
         </ng-template>
