@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { LancamentosFiltro, LancamentosService } from '../lancamentos.service';
-import { LazyLoadEvent, MessageService } from 'primeng/api';
+import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -11,7 +11,8 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentosService: LancamentosService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private dialog: ConfirmationService
   ) { }
 
   totalRegistros = 0;
@@ -36,12 +37,25 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   async excluir(lancamento: any, tabela: any) {
-    try {
-      await this.lancamentosService.excluir(lancamento.codigo);
-      this.messageService.add({severity: 'success', summary: 'Lançamento excluido com sucesso!'});
-      this.pesquisar(tabela._first / tabela._rows);
-    } catch (e) {
-      this.messageService.add({severity: 'success', summary: e});
-    }
+    await this.dialog.confirm({
+      message: 'Tem certeza que deseja excluir este lançamento?',
+      accept: async () => {
+        try {
+          await this.lancamentosService.excluir(lancamento.codigo);
+          this.successMessage('Lançamento excluido com sucesso!');
+          await this.pesquisar(tabela._first / tabela._rows);
+        } catch (e) {
+          this.errorMessage(e);
+        }
+      }
+    });
+  }
+
+  successMessage(mensagem: string){
+    this.messageService.add({severity: 'success', summary: mensagem});
+  }
+
+  errorMessage(mensagem: string){
+    this.messageService.add({severity: 'error', summary: mensagem});
   }
 }
