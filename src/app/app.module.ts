@@ -13,6 +13,8 @@ import {CoreModule} from "./core/core.module";
 import { HttpClientModule } from '@angular/common/http';
 import { LancamentosService } from './lancamentos/lancamentos.service';
 import {PessoasService} from "./pessoas/pessoas.service";
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 registerLocaleData(localeBr, 'pt', localeBrExtra);
 
@@ -29,6 +31,7 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
     PessoasModule,
     CoreModule,
     HttpClientModule,
+    ToastModule
   ],
   providers: [
     {
@@ -36,7 +39,8 @@ registerLocaleData(localeBr, 'pt', localeBrExtra);
       useValue: 'pt'
     },
     LancamentosService,
-    PessoasService
+    PessoasService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
