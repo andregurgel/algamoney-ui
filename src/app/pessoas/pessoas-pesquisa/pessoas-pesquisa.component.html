@@ -29,8 +29,8 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td>{{pessoa.nome}}</td>
-            <td>{{pessoa.cidade}}</td>
-            <td>{{pessoa.estado}}</td>
+            <td>{{pessoa.endereco?.cidade}}</td>
+            <td>{{pessoa.endereco?.estado}}</td>
             <td>{{pessoa.ativo}}</td>
             <td style="text-align: center">
               <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom"></button>
