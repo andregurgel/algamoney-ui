@@ -59,8 +59,4 @@ export class LancamentosPesquisaComponent implements OnInit {
   successMessage(mensagem: string){
     this.messageService.add({severity: 'success', summary: mensagem});
   }
-
-  errorMessage(mensagem: string){
-    this.messageService.add({severity: 'error', summary: mensagem});
-  }
 }

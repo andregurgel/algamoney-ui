@@ -34,6 +34,23 @@ export class PessoasService {
     return this.http.get(`${this.URL}`, {headers, params}).toPromise();
   }
 
+  excluir(codigo: number): Promise<any> {
+    let headers = new HttpHeaders();
+
+    headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.URL}/${codigo}`, {headers}).toPromise();
+  }
+
+  mudarStatus(codigo: number, ativo: boolean): Promise<any> {
+    let headers = new HttpHeaders();
+
+    headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.URL}/${codigo}/ativo`, ativo, {headers}).toPromise();
+  }
+
   listarTodos(): Promise<any> {
     let headers = new HttpHeaders();
 
