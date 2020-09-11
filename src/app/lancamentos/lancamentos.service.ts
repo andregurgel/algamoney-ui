@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
+import { Lancamento } from '../core/model';
 
 export class LancamentosFiltro {
   descricao: string;
@@ -48,9 +49,16 @@ export class LancamentosService {
 
   excluir(codigo: number): Promise<any> {
     let headers = new HttpHeaders();
-
     headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     return this.http.delete(`${this.URL}/${codigo}`, {headers}).toPromise();
+  }
+
+  salvar(lancamento: Lancamento): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.URL, JSON.stringify(lancamento), { headers }).toPromise();
   }
 }

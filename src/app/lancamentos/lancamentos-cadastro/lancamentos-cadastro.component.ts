@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../../categorias/categorias.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { PessoasService } from '../../pessoas/pessoas.service';
+import { Lancamento } from '../../core/model';
+import { LancamentosService } from '../lancamentos.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
@@ -13,6 +16,8 @@ export class LancamentosCadastroComponent implements OnInit {
   constructor(
     private categoriasService: CategoriasService,
     private pessoasService: PessoasService,
+    private lancamentosService: LancamentosService,
+    private messageService: MessageService,
     private error: ErrorHandlerService
   ) { }
 
@@ -22,8 +27,8 @@ export class LancamentosCadastroComponent implements OnInit {
   ];
 
   categorias = [];
-
   pessoas = [];
+  lancamento = new Lancamento();
 
   ngOnInit(): void {
     this.listarCategorias();
@@ -50,6 +55,22 @@ export class LancamentosCadastroComponent implements OnInit {
     } catch (e) {
       this.error.handle(e);
     }
+  }
+
+  async salvar(form: any){
+    try {
+      await this.lancamentosService.salvar(this.lancamento);
+      this.successMessage('Lançamento cadastrado com sucesso!');
+      form.reset();
+
+      this.lancamento = new Lancamento();
+    } catch (e) {
+      this.error.handle(e);
+    }
+  }
+
+  successMessage(mensagem: string){
+    this.messageService.add({severity: 'success', summary: mensagem});
   }
 
 }
