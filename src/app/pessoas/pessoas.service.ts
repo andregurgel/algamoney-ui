@@ -53,7 +53,6 @@ export class PessoasService {
 
   listarTodos(): Promise<any> {
     let headers = new HttpHeaders();
-
     headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     return this.http.get(this.URL, {headers}).toPromise();

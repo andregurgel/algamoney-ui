@@ -37,10 +37,6 @@ export class PessoasPesquisaComponent implements OnInit {
     }
   }
 
-  async listarTodos() {
-    const response = await this.pessoasService.listarTodos();
-  }
-
   aoMudarPAgina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
