@@ -1,5 +1,5 @@
 <div class="container">
-  <form #pessoaform="ngForm" autocomplete="off">
+  <form #pessoaform="ngForm" autocomplete="off" (ngSubmit)="salvar(pessoaform)">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Nova Pessoa</h1>
@@ -7,54 +7,54 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required>
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" [(ngModel)]="pessoa.nome" required>
 
         <app-message [control]="nome" error="required" text="Digite seu nome"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Logradouro</label>
-        <input pInputText type="text" name="logradouro" ngModel #logradouro="ngModel" required>
+        <input pInputText type="text" name="logradouro" ngModel #logradouro="ngModel" [(ngModel)]="pessoa.endereco.logradouro" required>
 
         <app-message [control]="logradouro" error="required" text="Informe seu logradouro"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Numero</label>
-        <input pInputText type="text" name="numero" ngModel #numero="ngModel" required>
+        <input pInputText type="text" name="numero" ngModel #numero="ngModel" [(ngModel)]="pessoa.endereco.numero" required>
 
         <app-message [control]="numero" error="required" text="Informe seu numero"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>CEP</label>
-        <p-inputMask mask="99999-999" name="cep" ngModel #cep="ngModel" required></p-inputMask>
+        <p-inputMask mask="99999-999" name="cep" ngModel #cep="ngModel" [(ngModel)]="pessoa.endereco.cep" required></p-inputMask>
 
         <app-message [control]="cep" error="required" text="Informe seu cep"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Complemento</label>
-        <input pInputText type="text">
+        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento">
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Bairro</label>
-        <input pInputText type="text" name="bairro" ngModel #bairro="ngModel" required>
+        <input pInputText type="text" name="bairro" ngModel #bairro="ngModel" [(ngModel)]="pessoa.endereco.bairro" required>
 
         <app-message [control]="bairro" error="required" text="Informe seu bairro"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <input pInputText type="text" name="cidade" ngModel #cidade="ngModel" required>
+        <input pInputText type="text" name="cidade" ngModel #cidade="ngModel" [(ngModel)]="pessoa.endereco.cidade" required>
 
         <app-message [control]="cidade" error="required" text="Informe sua cidade"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <input pInputText type="text" name="estado" ngModel #estado="ngModel" required>
+        <input pInputText type="text" name="estado" ngModel #estado="ngModel" [(ngModel)]="pessoa.endereco.estado" required>
 
         <app-message [control]="estado" error="required" text="Informe seu estado"></app-message>
       </div>
