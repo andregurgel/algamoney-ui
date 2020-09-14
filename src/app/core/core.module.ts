@@ -9,6 +9,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { LancamentosService } from '../lancamentos/lancamentos.service';
 import { PessoasService } from '../pessoas/pessoas.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   imports: [
     CommonModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,

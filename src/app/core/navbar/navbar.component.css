@@ -12,17 +12,17 @@
   margin: 0;
   top: 0;
   bottom: 0;
-  right: -210px;
+  left: -210px;
   padding: 0;
   width: 210px;
   z-index: 9998;
   background-color: #3a3633;
   list-style: none;
-  transition: right ease-in-out 150ms;
+  transition: left ease-in-out 150ms;
 }
 
 .navbar-menu-open {
-  right: 0px;
+  left: 0px;
 }
 
 .navbar-user {
@@ -45,4 +45,8 @@
 
 .navbar-menuitem a:hover {
   color: #fff;
+}
+
+.navbar-menuitem.ativo {
+  background-color: #494541;
 }

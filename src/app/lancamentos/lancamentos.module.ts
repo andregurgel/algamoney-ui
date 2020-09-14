@@ -14,6 +14,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {InputMaskModule} from "primeng/inputmask";
 import {SharedModule} from "../shared/shared.module";
+import { RouterModule } from '@angular/router';
 
 
 
@@ -35,7 +36,8 @@ import {SharedModule} from "../shared/shared.module";
     DropdownModule,
     InputNumberModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     LancamentosCadastroComponent,

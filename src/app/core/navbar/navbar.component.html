@@ -9,8 +9,8 @@
 
   <ul class="navbar-menu" [ngClass]="exibindoMenu ? 'navbar-menu-open' : null">
     <li class="navbar-user">Andre Gurgel</li>
-    <li class="navbar-menuitem"><a href="#">Lançamentos</a></li>
-    <li class="navbar-menuitem"><a href="#">Pessoas</a></li>
-    <li class="navbar-menuitem"><a href="#">Logout</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/lancamentos">Lançamentos</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/pessoas">Pessoas</a></li>
+    <li class="navbar-menuitem" ><a href="#">Logout</a></li>
   </ul>
 </nav>
