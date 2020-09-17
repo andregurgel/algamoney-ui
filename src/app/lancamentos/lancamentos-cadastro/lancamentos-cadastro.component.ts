@@ -5,6 +5,8 @@ import { PessoasService } from '../../pessoas/pessoas.service';
 import { Lancamento } from '../../core/model';
 import { LancamentosService } from '../lancamentos.service';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
@@ -16,9 +18,12 @@ export class LancamentosCadastroComponent implements OnInit {
   constructor(
     private categoriasService: CategoriasService,
     private pessoasService: PessoasService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private lancamentosService: LancamentosService,
     private messageService: MessageService,
-    private error: ErrorHandlerService
+    private error: ErrorHandlerService,
+    private title: Title
   ) { }
 
   tipoDeLancamento = [
@@ -31,8 +36,20 @@ export class LancamentosCadastroComponent implements OnInit {
   lancamento = new Lancamento();
 
   ngOnInit(): void {
+    const codigoLancamento = this.activatedRoute.snapshot.params['codigo'];
+
+    this.title.setTitle('Novo lançamento');
+
+    if (codigoLancamento) {
+      this.carregarLancamento(codigoLancamento);
+    }
+
     this.listarCategorias();
     this.listarPessoas();
+  }
+
+  get editando() {
+    return Boolean(this.lancamento.codigo);
   }
 
   async listarCategorias() {
@@ -57,16 +74,59 @@ export class LancamentosCadastroComponent implements OnInit {
     }
   }
 
-  async salvar(form: any){
-    try {
-      await this.lancamentosService.salvar(this.lancamento);
-      this.successMessage('Lançamento cadastrado com sucesso!');
-      form.reset();
+  salvar(form: any){
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
 
-      this.lancamento = new Lancamento();
+  async adicionarLancamento(form: any) {
+    try {
+      const response = await this.lancamentosService.salvar(this.lancamento);
+      this.successMessage('Lançamento cadastrado com sucesso!');
+
+      const lancamentoAdicionado = response;
+      this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
     } catch (e) {
       this.error.handle(e);
     }
+  }
+
+  async atualizarLancamento(form: any) {
+    try {
+      await this.lancamentosService.atualizar(this.lancamento)
+        .then(lancamento => {
+          this.lancamento = lancamento;
+          this.atualizaTitulo();
+        });
+      this.successMessage('Lançamento alterado com sucesso!');
+    } catch (e) {
+      this.error.handle(e);
+    }
+  }
+
+  carregarLancamento(codigo: number) {
+    this.lancamentosService.buscarPeloCodigo(codigo)
+      .then(lancamento => {
+        this.lancamento = lancamento;
+        this.atualizaTitulo();
+      })
+      .catch(erro => this.error.handle(erro));
+  }
+
+  novo(form: any) {
+    form.reset();
+    setTimeout(function() {
+      this.lancamento = new Lancamento();
+    }.bind(this), 1);
+
+    this.router.navigate(['/lancamentos/novo']);
+  }
+
+  atualizaTitulo() {
+    this.title.setTitle(`Edição de lançamento: ${this.lancamento.descricao}`);
   }
 
   successMessage(mensagem: string){

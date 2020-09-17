@@ -10,12 +10,15 @@ import { LancamentosService } from '../lancamentos/lancamentos.service';
 import { PessoasService } from '../pessoas/pessoas.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { Title } from '@angular/platform-browser';
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { RouterModule } from '@angular/router';
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
   ]
 })
