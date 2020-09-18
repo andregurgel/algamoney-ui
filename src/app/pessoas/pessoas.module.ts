@@ -14,7 +14,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 
 @NgModule({
@@ -36,7 +36,7 @@ import { RouterModule } from '@angular/router';
     InputNumberModule,
     InputMaskModule,
     SharedModule,
-    RouterModule
+    PessoasRoutingModule
   ],
   exports: []
 })
