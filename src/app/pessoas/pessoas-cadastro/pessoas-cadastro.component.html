@@ -2,7 +2,7 @@
   <form #pessoaform="ngForm" autocomplete="off" (ngSubmit)="salvar(pessoaform)">
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{ editando ? 'Editar' : 'Nova'}} Pessoa</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">

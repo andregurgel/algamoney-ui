@@ -35,7 +35,7 @@
               <a href="javascript:;" (click)="mudarStatus(pessoa, tabela)" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}">{{pessoa.ativo ? 'Ativo' : 'Desativado'}}</a>
             </td>
             <td style="text-align: center">
-              <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom"></button>
+              <button pButton icon="pi pi-pencil" style="margin-right: 10px" pTooltip="Editar" tooltipPosition="bottom" [routerLink]="['/pessoas', pessoa.codigo]" ></button>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom" (click)="excluir(pessoa, tabela)"></button>
             </td>
           </tr>
