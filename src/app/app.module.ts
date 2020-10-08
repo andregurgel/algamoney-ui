@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import localeBrExtra from '@angular/common/locales/extra/pt';
@@ -11,8 +11,19 @@ import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 
 registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
+
+export function jwtOptionsFactory() {
+  return {
+    tokenGetter: () => {
+      return localStorage.getItem('access_token');
+    },
+    allowedDomains: [/localhost:8080/],
+    disallowedRoutes: [/oauth\/token/]
+  };
+}
 
 @NgModule({
   declarations: [
@@ -25,9 +36,19 @@ registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
     LancamentosModule,
     PessoasModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory
+      }
+    }),
   ],
-  providers: [],
+  // providers: [{
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: AddHeaderInterceptor,
+  //   multi: true
+  // }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

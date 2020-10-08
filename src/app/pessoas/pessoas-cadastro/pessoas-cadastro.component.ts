@@ -55,7 +55,6 @@ export class PessoasCadastroComponent implements OnInit {
 
   async atualizarPessoa(form: any): Promise<any> {
     try {
-      console.log(this.pessoa);
       await this.pessoasService.atualizar(this.pessoa);
       this.successMessage('Pessoa alterada com sucesso!');
     } catch (e) {

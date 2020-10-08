@@ -27,7 +27,7 @@ export class LoginFormComponent implements OnInit {
     try {
       this.token = await this.authService.login(usuario, senha);
       this.armazenarToken(this.token.access_token);
-      this.router.navigate(['/lancamentos']);
+      await this.router.navigate(['/lancamentos']);
     } catch (e) {
       const erro = e.error;
       if (erro.error === 'invalid_grant') {

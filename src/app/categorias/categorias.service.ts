@@ -11,9 +11,6 @@ export class CategoriasService {
   URL = 'http://localhost:8080/categorias';
 
   listarTodas(): Promise<any> {
-    let headers = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return this.http.get(this.URL, {headers}).toPromise();
+    return this.http.get(this.URL).toPromise();
   }
 }
